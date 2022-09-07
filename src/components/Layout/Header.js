@@ -9,14 +9,14 @@ const Header = (props) => {
         <span>STORE</span>
         <span>ABOUT</span>
 
-        <button className={classes.button}> Cart </button>
+        <button className={classes.button} onClick={props.onShowCart}> Cart </button>
         <span> 0 </span>
       </header>
       <h1 className={classes.h1}> The Generics </h1>
 
-      <section>
+      <div>
         <h2 className={classes.music}> MUSIC </h2>
-      </section>
+      </div>
     </Fragment>
   );
 };
