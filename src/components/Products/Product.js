@@ -1,15 +1,16 @@
 import React from "react";
 
-import AvailableProducts from "./AvailbleProducts";
 
 const Product = (props) => {
-    return <section>
+    console.log(props.title)
+    return <li>
         <div>
             <h3>{props.title}</h3>
-            <img src={props.image}></img>
+            <img src={props.image} alt="some images"></img>
             <h1>{props.price}</h1>
+            <button>Add To Cart</button>
         </div>
-    </section>
+    </li>
 }
 
 export default Product;
