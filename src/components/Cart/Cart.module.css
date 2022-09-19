@@ -1,9 +1,19 @@
-.cart-items {
-    list-style: none;
-    margin: 0;
+.cart{
+    margin: 20px 0px;
     padding: 0;
+    font-family: "Metal Mania";
+    text-align: center;
+    font-size: 30px;
+}
+.cart-items {
+    
+    list-style: none;
+    margin: 1%;
+    padding: 10%;
     max-height: 20rem;
     overflow: auto;
+    word-spacing: normal;
+
   }
 
 .img {
@@ -48,4 +58,6 @@
     background-color: red;
     color: white;
 }
+
+
 
