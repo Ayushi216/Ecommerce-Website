@@ -7,6 +7,7 @@ import Products from "./components/Products/Products";
 import About from "./components/About/About";
 import CartProvider from "./store/CartProvider";
 import Home from "./components/Homee/Home";
+import Contact from "./components/Contact/contact";
 
 function App() {
   const [cartisShown, setCartIsShown] = useState(false);
@@ -34,6 +35,10 @@ function App() {
 
         <Route path="/home">
           <Home />
+        </Route>
+
+        <Route path="/contact_us">
+          <Contact />
         </Route>
       </main>
     </CartProvider>

@@ -10,6 +10,7 @@ const Header = (props) => {
         <NavLink to ="/home"><span>HOME</span></NavLink>
         <NavLink to ="/store"><span>STORE</span></NavLink>
         <NavLink to ="/about"><span>ABOUT</span></NavLink>
+        <NavLink to ="/contact_us"><span>CONTACT US</span></NavLink>
       
 
         <button className={classes.button} onClick={props.onShowCart}> Cart </button>
