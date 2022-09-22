@@ -1,0 +1,14 @@
+.about{
+    text-align: right;
+    
+}
+
+.header {
+    text-align: center;
+}
+
+.logo {
+    width: 20%;
+    align-items: center;
+    display: flex;
+}

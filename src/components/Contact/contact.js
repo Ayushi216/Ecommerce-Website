@@ -30,7 +30,7 @@ const Contact = (props) => {
     
   return (
     <Fragment>
-      <h1>Appointment Booking App</h1>
+      <h1>Have query? We will get back to you :D </h1>
       <form onSubmit={submitHandler}>
         <label> Name</label>
         <input id="username" type="text" name="username" ref={usernameRef} required />
