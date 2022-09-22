@@ -1,8 +1,16 @@
-import React, { Fragment } from "react";
-import { NavLink } from "react-router-dom";
+import React, { Fragment, useContext } from "react";
+import { NavLink, useHistory } from "react-router-dom";
 import classes from "./Header.module.css";
+import AuthContext from "../../store/auth-context";
 
 const Header = (props) => {
+  let number = 3
+  const authCtx = useContext(AuthContext);
+  const history = useHistory();
+  const logoutHandler = () => {
+    authCtx.logout();
+    history.replace('/auth')
+  }
   return (
     <Fragment>
       
@@ -13,8 +21,9 @@ const Header = (props) => {
         <NavLink to ="/contact_us"><span>CONTACT US</span></NavLink>
       
 
-        <button className={classes.button} onClick={props.onShowCart}> Cart </button>
-        <span> 3 </span>
+        <button className={classes.button} onClick={props.onShowCart}> Cart    {number}</button>
+        
+        <button onClick= {logoutHandler}> Logout </button>
       </header>
       <h1 className={classes.h1}> The Generics </h1>
 

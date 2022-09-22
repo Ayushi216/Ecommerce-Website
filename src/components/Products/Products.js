@@ -4,7 +4,7 @@ import AvailableProducts from "./AvailableProducts";
 const Products = (props) => {
   return (
     <Fragment>
-      <h2>MUSIC </h2>
+      <h2 >MUSIC </h2>
       <AvailableProducts />;
     </Fragment>
   );

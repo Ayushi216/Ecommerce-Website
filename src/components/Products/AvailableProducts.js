@@ -44,6 +44,7 @@ const AvailableProducts = () => {
   return (
     <section>
       <ul>
+        
         {productsArr.map((prod) => {
           return (
             <Product

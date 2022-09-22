@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
+import classes from './About.module.css'
 
 const About = () => {
   return (
-    <div>
-      <h2> About </h2>
-      <p>
+    <Fragment>
+      <h2 className={classes.header}> About </h2>
+      <p className={classes.about}>
 
         Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of
         sorrows, hates no prosecutors will unfold in the enduring of which were
@@ -27,7 +28,9 @@ const About = () => {
         take the hardships of the life of harsh condemn, we are accusing him?
         Him whom something large cisterns.
       </p>
-    </div>
+
+      <img className={classes.logo} src="generics.jpg" alt="Logo"></img>
+    </Fragment>
   );
 };
 
