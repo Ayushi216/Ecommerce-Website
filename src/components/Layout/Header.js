@@ -4,9 +4,13 @@ import classes from "./Header.module.css";
 import AuthContext from "../../store/auth-context";
 
 const Header = (props) => {
-  let number = 3
+  let number=10;
+  
   const authCtx = useContext(AuthContext);
   const history = useHistory();
+
+  console.log("Hi", AuthContext.length)
+  
   const logoutHandler = () => {
     authCtx.logout();
     history.replace('/auth')
@@ -21,7 +25,7 @@ const Header = (props) => {
         <NavLink to ="/contact_us"><span>CONTACT US</span></NavLink>
       
 
-        <button className={classes.button} onClick={props.onShowCart}> Cart    {number}</button>
+        <button className={classes.button} onClick={props.onShowCart}> Cart {number}</button>
         
         <button onClick= {logoutHandler}> Logout </button>
       </header>

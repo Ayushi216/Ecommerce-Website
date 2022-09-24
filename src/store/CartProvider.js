@@ -8,7 +8,7 @@ const CartProvider = (props) => {
 
     const addItemToCartHandler = (item) => {
         setItems([...items, item]);
-        console.log(item)
+        console.log("Adding" , item)
     }
     const cartContext = {
         item: items,
