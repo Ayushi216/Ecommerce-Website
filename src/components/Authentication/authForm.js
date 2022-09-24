@@ -73,7 +73,9 @@ const AuthForm = () => {
   };
 
   return (
+    
     <section className={classes.auth}>
+      <h1>Generics</h1>
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
       <form onSubmit={SubmitHandler}>
         <div className={classes.control}>

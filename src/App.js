@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 import Cart from "./components/Cart/Cart";
 import Header from "./components/Layout/Header";
@@ -36,27 +36,34 @@ function App() {
         <Route path="/" exact>
             <AuthForm />
           </Route>
-          <Route path="/auth">
+          {!authCtx.isLoggedIn && (<Route path="/auth">
             <AuthForm />
           </Route>
-          <Route path="/store" exact>
+          )}
+          {authCtx.isLoggedIn && (<Route path="/store" exact>
             <Products />
           </Route>
+          )}
+          
 
-          <Route path="/about">
+          {authCtx.isLoggedIn && (<Route path="/about">
             <About />
           </Route>
-
-          <Route path="/home">
+          )}
+          {authCtx.isLoggedIn && (<Route path="/home">
             <Home />
           </Route>
-
+          )}
           <Route path="/contact_us">
             <Contact />
           </Route>
 
           <Route path="/store/:product_id">
             <ProductDetail />
+          </Route>
+
+          <Route path = "*">
+            <Redirect to='/'></Redirect>
           </Route>
         </Switch>
       </main>

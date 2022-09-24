@@ -11,8 +11,9 @@ const Product = (props) => {
 
     //const quantity = document.getElementById("amount_" + props.id).value;
 
-    cartCtx.addItem({ ...props.item });
-    console.log(cartCtx);
+    cartCtx.addItem({ ...props });
+
+    console.log(props);
   };
   return (
     <Fragment>
