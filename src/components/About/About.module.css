@@ -1,5 +1,9 @@
 .about{
-    text-align: right;
+    text-align: center;
+    margin-right: 100px;
+    margin-top: 50px;
+    margin-left: 30px;
+    
     
 }
 
@@ -8,7 +12,13 @@
 }
 
 .logo {
-    width: 20%;
-    align-items: center;
+    width: 350px;
+    margin-right: 90px;
+    margin-top: 50px;
+   
+
+}
+
+.section {
     display: flex;
 }

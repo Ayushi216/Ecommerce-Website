@@ -26,6 +26,8 @@ const AuthForm = () => {
     const enteredEmail = emailInputRef.current.value;
     const eneteredPassword = passwordInputRef.current.value;
 
+    localStorage.setItem('email', enteredEmail)
+
     setIsLoading(true);
     let url;
 

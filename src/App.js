@@ -1,5 +1,7 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
+
+import axios from 'axios'
 
 import Cart from "./components/Cart/Cart";
 import Header from "./components/Layout/Header";
@@ -9,12 +11,15 @@ import CartProvider from "./store/CartProvider";
 import Home from "./components/Homee/Home";
 import Contact from "./components/Contact/contact";
 import AuthForm from "./components/Authentication/authForm";
-import ProductDetail from "./components/Products/ProductDetail";
+import ProductDetail from "./components/Product Detail/ProductDetail";
 import AuthContext from "./store/auth-context";
-
+import CartContext from "./store/cart-context";
 
 function App() {
   const authCtx = useContext(AuthContext);
+  const cartCtx = useContext(CartContext);
+
+    let email = localStorage.getItem("email").replace(".", "").replace("@", "");
 
   const [cartisShown, setCartIsShown] = useState(false);
 
@@ -26,33 +31,48 @@ function App() {
     setCartIsShown(false);
   };
 
+  useEffect(() => {
+    axios.get(`https://crudcrud.com/api/247852e62d47417e860f34c644fb5ae9/cart${email}`).then((res) => {
+      console.log(res.data)
+      res.data.forEach((item) => {
+        console.log(item)
+        cartCtx.addItem(item);
+      })
+    }).catch((err) => {
+      alert(err)
+    })
+  }, [])
+
   return (
     <CartProvider>
-      {cartisShown && <Cart onClose={hideCartHandler} />} 
+      {cartisShown && <Cart onClose={hideCartHandler} />}
 
       {authCtx.isLoggedIn && <Header onShowCart={showCartHandler} />}
       <main>
         <Switch>
-        <Route path="/" exact>
+          <Route path="/" exact>
             <AuthForm />
           </Route>
-          {!authCtx.isLoggedIn && (<Route path="/auth">
-            <AuthForm />
-          </Route>
+          {!authCtx.isLoggedIn && (
+            <Route path="/auth">
+              <AuthForm />
+            </Route>
           )}
-          {authCtx.isLoggedIn && (<Route path="/store" exact>
-            <Products />
-          </Route>
+          {authCtx.isLoggedIn && (
+            <Route path="/store" exact>
+              <Products />
+            </Route>
           )}
-          
 
-          {authCtx.isLoggedIn && (<Route path="/about">
-            <About />
-          </Route>
+          {authCtx.isLoggedIn && (
+            <Route path="/about">
+              <About />
+            </Route>
           )}
-          {authCtx.isLoggedIn && (<Route path="/home">
-            <Home />
-          </Route>
+          {authCtx.isLoggedIn && (
+            <Route path="/home">
+              <Home />
+            </Route>
           )}
           <Route path="/contact_us">
             <Contact />
@@ -62,8 +82,8 @@ function App() {
             <ProductDetail />
           </Route>
 
-          <Route path = "*">
-            <Redirect to='/'></Redirect>
+          <Route path="*">
+            <Redirect to="/"></Redirect>
           </Route>
         </Switch>
       </main>
