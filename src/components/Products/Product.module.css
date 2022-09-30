@@ -2,10 +2,11 @@
     text-align: center;
     float: left;
     zoom: 1;
-    margin: 7rem;
+    margin: 1rem;
     list-style: none;
     margin-left: 15rem;
     margin-bottom: 0rem;
+    padding: 5px;
 }
 
 .button1 {
@@ -17,3 +18,4 @@
   margin: auto;
   cursor: pointer;
 }
+

@@ -4,6 +4,8 @@ import Product from "./Product";
 const AvailableProducts = () => {
   const productsArr = [
     {
+      id: '1',
+      
       title: "Colors",
 
       price: 100,
@@ -13,6 +15,9 @@ const AvailableProducts = () => {
     },
 
     {
+
+      id: '2',
+
       title: "Black and white Colors",
 
       price: 50,
@@ -22,6 +27,9 @@ const AvailableProducts = () => {
     },
 
     {
+
+      id: '3',
+
       title: "Yellow and Black Colors",
 
       price: 70,
@@ -31,6 +39,9 @@ const AvailableProducts = () => {
     },
 
     {
+
+      id: '4',
+
       title: "Blue Color",
 
       price: 100,
@@ -39,7 +50,6 @@ const AvailableProducts = () => {
         "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
     },
   ];
-  console.log(productsArr);
 
   return (
     <section>
@@ -48,6 +58,8 @@ const AvailableProducts = () => {
         {productsArr.map((prod) => {
           return (
             <Product
+              key = {Math.random()}
+              id = {prod.id}
               title={prod.title}
               price={prod.price}
               image={prod.imageUrl}

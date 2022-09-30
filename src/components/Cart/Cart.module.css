@@ -57,7 +57,13 @@
     align-items: flex-end;
     background-color: red;
     color: white;
+    float: right;
+    
 }
 
+.cancel {
+    color: white;
+    background-color: red;
+}
 
 

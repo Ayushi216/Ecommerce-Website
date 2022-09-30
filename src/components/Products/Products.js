@@ -5,7 +5,7 @@ import classes from './Products.module.css'
 const Products = (props) => {
   return (
     <Fragment>
-      <h2 className={classes.music}>MUSIC </h2>
+      <h2 className={classes.music}> COLORS </h2>
       <AvailableProducts />
     </Fragment>
   );
