@@ -1,4 +1,4 @@
-import React, { useContext  } from "react";
+import React, { useContext } from "react";
 
 import Modal from "../UI/Modal";
 
@@ -6,28 +6,15 @@ import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
 
 import CartContext from "../../store/cart-context";
-//import axios from "axios";
 
 const Cart = (props) => {
-  //let email = localStorage.getItem("email").replace(".", "").replace("@", "");
   const cartCntx = useContext(CartContext);
-  console.log("Items of Cart", cartCntx.items)
+  console.log("Items of Cart", cartCntx.items);
 
- 
   let totalAmount = 0;
   cartCntx?.items?.forEach((items) => {
     totalAmount = totalAmount + items.price;
   });
-
-  /*useEffect(() => {
-    axios.get(`https://crudcrud.com/api/247852e62d47417e860f34c644fb5ae9/cart${email}`).then((res) => {
-      console.log(res.data)
-    }).catch((err) => {
-      alert(err)
-    })
-  }, [])*/
-
-
 
   const cartItems = (
     <ul className={classes["cart-items"]}>
@@ -51,7 +38,6 @@ const Cart = (props) => {
       <section className={classes.section}>
         <h2 className={classes.cart}> CART </h2>
         <button className={classes.cancel} onClick={props.onClose}>
-          
           x
         </button>
       </section>
