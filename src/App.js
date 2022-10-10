@@ -31,17 +31,17 @@ function App() {
     setCartIsShown(false);
   };
 
-  useEffect(() => {
-    axios.get(`https://crudcrud.com/api/247852e62d47417e860f34c644fb5ae9/cart${email}`).then((res) => {
+ /*useEffect(() => {
+    axios.get(`https://crudcrud.com/api/21eb06cae255450f902224de607507c5/cart${email}`).then((res) => {
       console.log(res.data)
       res.data.forEach((item) => {
-        console.log(item)
+        console.log("Inside get ", item)
         cartCtx.addItem(item);
       })
     }).catch((err) => {
       alert(err)
     })
-  }, [])
+  }, [])*/
 
   return (
     <CartProvider>
