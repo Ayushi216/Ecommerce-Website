@@ -9,6 +9,7 @@ import axios from "axios";
   const addItemToCartHandler = (item) => {
     setItems([...items, item]);
     console.log("Adding", item);
+    console.log("Adding items", items);
   };
 
   const removeItemHandler = (id) => {
