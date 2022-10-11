@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, Fragment } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import axios from 'axios'
@@ -31,8 +31,9 @@ function App() {
     setCartIsShown(false);
   };
 
- /*useEffect(() => {
-    axios.get(`https://crudcrud.com/api/21eb06cae255450f902224de607507c5/cart${email}`).then((res) => {
+ useEffect(() => {
+  console.log("use effect called")
+    axios.get(`https://crudcrud.com/api/ae204094299d4ce3a61d90cb73423523/cart${email}`).then((res) => {
       console.log(res.data)
       res.data.forEach((item) => {
         console.log("Inside get ", item)
@@ -41,10 +42,10 @@ function App() {
     }).catch((err) => {
       alert(err)
     })
-  }, [])*/
+  }, [])
 
   return (
-    <CartProvider>
+    <Fragment>
       {cartisShown && <Cart onClose={hideCartHandler} />}
 
       {authCtx.isLoggedIn && <Header onShowCart={showCartHandler} />}
@@ -87,7 +88,7 @@ function App() {
           </Route>
         </Switch>
       </main>
-    </CartProvider>
+      </Fragment>
   );
 }
 
