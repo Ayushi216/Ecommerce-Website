@@ -7,7 +7,7 @@ import Cart from "./components/Cart/Cart";
 import Header from "./components/Layout/Header";
 import Products from "./components/Products/Products";
 import About from "./components/About/About";
-import CartProvider from "./store/CartProvider";
+
 import Home from "./components/Homee/Home";
 import Contact from "./components/Contact/contact";
 import AuthForm from "./components/Authentication/authForm";
@@ -16,6 +16,10 @@ import AuthContext from "./store/auth-context";
 import CartContext from "./store/cart-context";
 
 function App() {
+  
+  if(!localStorage.getItem('email')) {
+    localStorage.setItem("email","")
+  }
   const authCtx = useContext(AuthContext);
   const cartCtx = useContext(CartContext);
 
@@ -32,17 +36,16 @@ function App() {
   };
 
  useEffect(() => {
-  console.log("use effect called")
-    axios.get(`https://crudcrud.com/api/ae204094299d4ce3a61d90cb73423523/cart${email}`).then((res) => {
+    cartCtx.emptyCart();
+    axios.get(`https://crudcrud.com/api/872c3caf3c234aabb4f688be09d3889e/cart${email}`).then((res) => {
       console.log(res.data)
       res.data.forEach((item) => {
-        console.log("Inside get ", item)
         cartCtx.addItem(item);
       })
     }).catch((err) => {
       alert(err)
     })
-  }, [])
+  }, [ email])
 
   return (
     <Fragment>
@@ -79,7 +82,7 @@ function App() {
             <Contact />
           </Route>
 
-          <Route path="/store/:product_id">
+          <Route path="/products/:product_id">
             <ProductDetail />
           </Route>
 

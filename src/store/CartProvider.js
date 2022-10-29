@@ -3,10 +3,12 @@ import CartContext from "./cart-context";
 import axios from "axios";
 
  export const CartProvider = (props) => {
+  
   let email = localStorage.getItem("email").replace(".", "").replace("@", "");
   const [items, setItems] = useState([]);
 
   const addItemToCartHandler = (item) => {
+
     setItems([...items, item]);
     console.log("Adding", item);
     console.log("Adding items", items);
@@ -21,14 +23,19 @@ import axios from "axios";
     setItems(i);
 
     axios.delete(
-      `https://crudcrud.com/api/21eb06cae255450f902224de607507c5/cart${email}/${id}`
+      `https://crudcrud.com/api/8cf8310dc6e64151922e6f8f03366b7c/cart${email}/${id}`
     );
   };
+
+  const emptyCartHandler = () => {
+    setItems([]);
+  }
   const cartContext = {
     items: items,
     totalAmount: 0,
     addItem: addItemToCartHandler,
     removeItem: removeItemHandler,
+    emptyCart: emptyCartHandler,
   };
   return (
     <CartContext.Provider value={cartContext}>
