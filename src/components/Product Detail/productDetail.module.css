@@ -9,7 +9,7 @@
   }
 
 .title {
-    margin-left: 150px;
+    margin-left: 50px;
 }
 
 .section {
@@ -18,5 +18,13 @@
 
 .reviews {
     padding: 20px;
+}
+
+.img2{
+    margin-top: 60px;
+    padding: 30px;
+    width: 150px;
+    height: 150px;
+   
 }
 

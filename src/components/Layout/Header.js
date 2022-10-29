@@ -18,6 +18,7 @@ const Header = (props) => {
 
   const logoutHandler = () => {
     authCtx.logout();
+
     history.replace("/auth");
   };
   return (

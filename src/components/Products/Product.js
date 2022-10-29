@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { Fragment, useContext } from "react";
 import classes from "./Product.module.css";
 import CartContext from "../../store/cart-context";
 import { Link } from "react-router-dom";
@@ -8,18 +8,6 @@ const Product = (props) => {
   const cartCtx = useContext(CartContext);
   let email = localStorage.getItem("email").replace(".", "").replace("@", "");
 
-  /*useEffect(() => {
-    axios.get(`https://crudcrud.com/api/ae204094299d4ce3a61d90cb73423523/cart${email}`).then((res) => {
-      console.log(res.data)
-      res.data.forEach((item) => {
-        console.log("Inside get ", item)
-        cartCtx.addItem(item);
-      })
-    }).catch((err) => {
-      alert(err)
-    })
-  }, [])*/
-
   const addItemToCart = (event) => {
     event.preventDefault();
 
@@ -27,9 +15,7 @@ const Product = (props) => {
 
     axios
       .post(
-        `https://crudcrud.com/api/ae204094299d4ce3a61d90cb73423523/cart${email}`,
-        props
-      )
+        `https://crudcrud.com/api/872c3caf3c234aabb4f688be09d3889e/cart${email}`, props)
       .then((res) => {
         console.log(res.data, "Successfull");
       })
@@ -40,7 +26,7 @@ const Product = (props) => {
   return (
     <Fragment>
       <li className={classes.list}>
-        <Link to={`/store/${props.id}`}>
+        <Link to={`/products/${props.id}`}>
           <div className={classes.div}>
             <h3>{props.title}</h3>
             <img src={props.image} alt="some images"></img>
