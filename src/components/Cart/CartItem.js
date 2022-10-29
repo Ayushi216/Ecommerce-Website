@@ -13,7 +13,7 @@ const CartItem = (props) => {
   };
 
   const onRemoveHandler = (event) => {
-    console.log(props)
+    console.log(props);
     cartCntx.removeItem(props)
   };
 
