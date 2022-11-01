@@ -35,9 +35,9 @@ function App() {
     setCartIsShown(false);
   };
 
- useEffect(() => {
+ /*useEffect(() => {
     cartCtx.emptyCart();
-    axios.get(`https://crudcrud.com/api/872c3caf3c234aabb4f688be09d3889e/cart${email}`).then((res) => {
+    axios.get(`https://crudcrud.com/api/52d21fb54c1d4f44a1bba65c9a346029/cart${email}`).then((res) => {
       console.log(res.data)
       res.data.forEach((item) => {
         cartCtx.addItem(item);
@@ -45,7 +45,7 @@ function App() {
     }).catch((err) => {
       alert(err)
     })
-  }, [ email])
+  }, [ email])*/
 
   return (
     <Fragment>

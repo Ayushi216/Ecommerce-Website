@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Product from "./Product";
-
+import CartContext from "../../store/cart-context";
+import axios from "axios";
 const AvailableProducts = () => {
+  const cartCtx = useContext(CartContext);
   const productsArr = [
     {
-      id: '1',
-      
+      id: "1",
+
       title: "Colors",
 
       price: 100,
@@ -15,8 +17,7 @@ const AvailableProducts = () => {
     },
 
     {
-
-      id: '2',
+      id: "2",
 
       title: "Black and white Colors",
 
@@ -27,8 +28,7 @@ const AvailableProducts = () => {
     },
 
     {
-
-      id: '3',
+      id: "3",
 
       title: "Yellow and Black Colors",
 
@@ -39,8 +39,7 @@ const AvailableProducts = () => {
     },
 
     {
-
-      id: '4',
+      id: "4",
 
       title: "Blue Color",
 
@@ -50,16 +49,29 @@ const AvailableProducts = () => {
         "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
     },
   ];
+  
+  let email = localStorage.getItem("email").replace(".", "").replace("@", "");
+  
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://crudcrud.com/api/52d21fb54c1d4f44a1bba65c9a346029/cart${email}`
+      ).then((res) => {
+          cartCtx.initilizeCart(res.data);
+      })
+      
+        
+  },[]);
 
   return (
     <section>
       <ul>
-        
         {productsArr.map((prod) => {
           return (
             <Product
-              key = {Math.random()}
-              id = {prod.id}
+              key={Math.random()}
+              id={prod.id}
               title={prod.title}
               price={prod.price}
               image={prod.imageUrl}

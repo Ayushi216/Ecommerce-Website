@@ -23,12 +23,17 @@ import axios from "axios";
     setItems(i);
 
     axios.delete(
-      `https://crudcrud.com/api/8cf8310dc6e64151922e6f8f03366b7c/cart${email}/${id}`
+      `https://crudcrud.com/api/52d21fb54c1d4f44a1bba65c9a346029/cart${email}/${id}`
     );
   };
 
   const emptyCartHandler = () => {
     setItems([]);
+  }
+
+  const initializeCartHandler = (items) => {
+    setItems(items)
+
   }
   const cartContext = {
     items: items,
@@ -36,6 +41,7 @@ import axios from "axios";
     addItem: addItemToCartHandler,
     removeItem: removeItemHandler,
     emptyCart: emptyCartHandler,
+    initilizeCart: initializeCartHandler,
   };
   return (
     <CartContext.Provider value={cartContext}>
