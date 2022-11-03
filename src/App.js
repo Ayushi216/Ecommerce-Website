@@ -41,7 +41,7 @@ function App() {
 
  useEffect(() => {
    if (!email) return;
-    axios.get(`https://crudcrud.com/api/66ad4bc62ba94bb8937980d9026a5a8f/cart${email}`).then((res) => {
+    axios.get(`https://crudcrud.com/api/ea33e6a605ea42f98b07f6d95b38c0a6/cart${email}`).then((res) => {
       const data= (res.data)
       for (const key in data) {
         const item = data[key];
