@@ -9,12 +9,13 @@ const Header = (props) => {
   const cartCtx = useContext(CartContext);
   const history = useHistory();
   const [quantity, setQuantity] = useState(0)
+
+
   
-  useEffect(() => {
+ useEffect(() => {
     setQuantity(cartCtx?.items?.length || 0) 
   },[cartCtx.items])
 
-  console.log(quantity)
 
   const logoutHandler = () => {
     authCtx.logout();
