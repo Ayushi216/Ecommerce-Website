@@ -7,21 +7,17 @@ import axios from "axios";
 const Product = (props) => {
   const cartCtx = useContext(CartContext);
   let email = localStorage.getItem("email").replace(".", "").replace("@", "");
+  
+
 
   const addItemToCart = (event) => {
+   
     event.preventDefault();
+    cartCtx.addItem({ ...props, quantity: props.quantity });
 
-    cartCtx.addItem({ ...props });
+    
 
-    axios
-      .post(
-        `https://crudcrud.com/api/52d21fb54c1d4f44a1bba65c9a346029/cart${email}`, props)
-      .then((res) => {
-        console.log(res.data, "Successfull");
-      })
-      .catch((error) => {
-        alert(error);
-      });
+    
   };
   return (
     <Fragment>
@@ -35,7 +31,10 @@ const Product = (props) => {
 
               <button className={classes.button1} onClick={addItemToCart}>
                 Add To Cart
+                
               </button>
+            
+
             </span>
           </div>
         </Link>

@@ -56,9 +56,10 @@ const AvailableProducts = () => {
   useEffect(() => {
     axios
       .get(
-        `https://crudcrud.com/api/52d21fb54c1d4f44a1bba65c9a346029/cart${email}`
+        `https://crudcrud.com/api/66ad4bc62ba94bb8937980d9026a5a8f/cart${email}`
       ).then((res) => {
           cartCtx.initilizeCart(res.data);
+          
       })
       
         
@@ -70,11 +71,14 @@ const AvailableProducts = () => {
         {productsArr.map((prod) => {
           return (
             <Product
+              
               key={Math.random()}
               id={prod.id}
               title={prod.title}
               price={prod.price}
               image={prod.imageUrl}
+              quantity= {1}
+              _id= {prod._id}
             />
           );
         })}

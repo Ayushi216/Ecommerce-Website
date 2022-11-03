@@ -7,6 +7,7 @@ export const CartContext= React.createContext({
     removeItem: (id) => {},
     emptyCart: () => {},
     initilizeCart: () => {},
+    mapID: (id) => {},
 })
 
 export default CartContext;

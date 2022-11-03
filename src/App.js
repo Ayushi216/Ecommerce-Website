@@ -1,7 +1,8 @@
 import { useState, useContext, useEffect, Fragment } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
+import axios from "axios";
 
-import axios from 'axios'
+
 
 import Cart from "./components/Cart/Cart";
 import Header from "./components/Layout/Header";
@@ -15,15 +16,18 @@ import ProductDetail from "./components/Product Detail/ProductDetail";
 import AuthContext from "./store/auth-context";
 import CartContext from "./store/cart-context";
 
+
 function App() {
+  const cartCtx= useContext(CartContext)
   
   if(!localStorage.getItem('email')) {
     localStorage.setItem("email","")
   }
   const authCtx = useContext(AuthContext);
-  const cartCtx = useContext(CartContext);
+  let email = localStorage.getItem("email").replace(".", "").replace("@", "");
 
-    let email = localStorage.getItem("email").replace(".", "").replace("@", "");
+
+
 
   const [cartisShown, setCartIsShown] = useState(false);
 
@@ -35,17 +39,20 @@ function App() {
     setCartIsShown(false);
   };
 
- /*useEffect(() => {
-    cartCtx.emptyCart();
-    axios.get(`https://crudcrud.com/api/52d21fb54c1d4f44a1bba65c9a346029/cart${email}`).then((res) => {
-      console.log(res.data)
-      res.data.forEach((item) => {
-        cartCtx.addItem(item);
-      })
+ useEffect(() => {
+   if (!email) return;
+    axios.get(`https://crudcrud.com/api/66ad4bc62ba94bb8937980d9026a5a8f/cart${email}`).then((res) => {
+      const data= (res.data)
+      for (const key in data) {
+        const item = data[key];
+        item._id = key;
+        cartCtx.mapID(item)
+      }
+      
     }).catch((err) => {
       alert(err)
     })
-  }, [ email])*/
+  }, [email, cartCtx])
 
   return (
     <Fragment>

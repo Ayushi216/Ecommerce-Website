@@ -9,7 +9,7 @@ import CartContext from "../../store/cart-context";
 
 const Cart = (props) => {
   const cartCntx = useContext(CartContext);
-  console.log("Items of Cart", cartCntx.items);
+
 
   let totalAmount = 0;
   cartCntx?.items?.forEach((items) => {
@@ -25,8 +25,9 @@ const Cart = (props) => {
             id={item.id}
             img={item.image}
             title={item.title}
-            quantity={1}
+            quantity={item.quantity}
             price={item.price}
+            _id={item._id}
           />
         </li>
       ))}
