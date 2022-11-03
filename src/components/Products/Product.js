@@ -2,15 +2,11 @@ import React, { Fragment, useContext } from "react";
 import classes from "./Product.module.css";
 import CartContext from "../../store/cart-context";
 import { Link } from "react-router-dom";
-import axios from "axios";
+
 
 const Product = (props) => {
   const cartCtx = useContext(CartContext);
-  let email = localStorage.getItem("email").replace(".", "").replace("@", "");
-  
-
-
-  const addItemToCart = (event) => {
+   const addItemToCart = (event) => {
    
     event.preventDefault();
     cartCtx.addItem({ ...props, quantity: props.quantity });

@@ -2,88 +2,73 @@ import { useState } from "react";
 import CartContext from "./cart-context";
 import axios from "axios";
 
-
- export const CartProvider = (props) => {
-  
- let email = localStorage.getItem("email").replace(".", "").replace("@", "");
+export const CartProvider = (props) => {
+  let email = localStorage.getItem("email").replace(".", "").replace("@", "");
   const [items, setItems] = useState([]);
 
   const addItemToCartHandler = (item) => {
-
     //setItems([...items, item]);
 
-    let arr=[...items];
-    let flag= false;
+    let arr = [...items];
+    let flag = false;
     items.forEach((element, index) => {
-
-      console.log(items)
+      console.log(items);
       if (element.id === item.id) {
-
-        arr[index].quantity=Number(item.quantity)+Number(arr[index].quantity);
-        flag=true;
+        arr[index].quantity =
+          Number(item.quantity) + Number(arr[index].quantity);
+        flag = true;
         console.log(arr[index]);
-        /*axios
-      .patch(
-        `https://crudcrud.com/api/66ad4bc62ba94bb8937980d9026a5a8f/cart${email}/${item._id}`,{
-          quantity: item.quantity + 1
-        }
-    
-      )
-      .then((res) => {
-
-        console.log(res.data, "Successfull");
-      })
-      .catch((error) => {
-        alert(error);
-      });*/
-
-        
-        
-      } 
+        let { _id, ...updatedData } = arr[index];
+        axios
+          .put(
+            `https://crudcrud.com/api/ea33e6a605ea42f98b07f6d95b38c0a6/cart${email}/${arr[index]._id}`,
+            updatedData
+          )
+          .then((res) => {
+            console.log(res.data, "Successfull");
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      }
     });
-    if(flag==false){
-      arr.push({...item,quantity:1})
+    if (flag == false) {
       axios
-      .post(
-        `https://crudcrud.com/api/66ad4bc62ba94bb8937980d9026a5a8f/cart${email}`, {...item,quantity:1}
-      )
-      .then((res) => {
-        console.log(res.data, "Successfull");
-      })
-      .catch((error) => {
-        alert(error);
-      });
-
+        .post(
+          `https://crudcrud.com/api/ea33e6a605ea42f98b07f6d95b38c0a6/cart${email}`,
+          { ...item, quantity: 1 }
+        )
+        .then((res) => {
+          arr.push(res.data);
+          console.log(res.data, "Successfull");
+          setItems(arr);
+        })
+        .catch((error) => {
+          alert(error);
+        });
     }
-    setItems(arr);
-
   };
-  
 
   const removeItemHandler = (id) => {
     let itemToRemove = items.findIndex((item) => item.id === id);
     const i = [...items];
     const updatedItems = i.splice(itemToRemove, 1);
     console.log(itemToRemove, i, updatedItems);
-    
 
     setItems(i);
-
-    
   };
 
   const emptyCartHandler = () => {
     setItems([]);
-  }
+  };
 
   const initializeCartHandler = (items) => {
-    setItems(items)
-
-  }
+    setItems(items);
+  };
 
   const mapIDHandler = (id) => {
-    items.id= id;
-  }
+    items.id = id;
+  };
   const cartContext = {
     items: items,
     totalAmount: 0,
@@ -91,7 +76,7 @@ import axios from "axios";
     removeItem: removeItemHandler,
     emptyCart: emptyCartHandler,
     initilizeCart: initializeCartHandler,
-    mapID: mapIDHandler,
+    mapID: mapIDHandler
   };
   return (
     <CartContext.Provider value={cartContext}>
